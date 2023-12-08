@@ -1,11 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var fs = require("fs");
+var nodeNetwork = [];
+var steps = 0;
 var inputFile = fs.readFileSync('input.txt', 'utf8').split(/\r?\n/);
 var instructions = inputFile[0];
-var nodeNetwork = [];
-var notFound = true;
-var steps = 0;
 // set Node Network
 for (var index = 2; index < inputFile.length; index++) {
     var line = inputFile[index];
@@ -13,8 +12,6 @@ for (var index = 2; index < inputFile.length; index++) {
 }
 var counter = 0;
 var currentNode = nodeNetwork.findIndex(function (thisNode) { return thisNode.current === 'AAA'; });
-console.log(nodeNetwork.length);
-console.log(instructions.length);
 // Find goal
 while (nodeNetwork[currentNode].current !== 'ZZZ') {
     if (counter === instructions.length) {
